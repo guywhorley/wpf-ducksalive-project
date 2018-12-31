@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DucksAlive.pages"
       mc:Ignorable="d" 
+	  Background="Black"
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="DucksAlive! - Home"
-      Background="Black">
+      Title="DucksAlive! - Home">
 
     <Grid Margin="10,0,10,10">
         
@@ -27,6 +27,43 @@
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		
+		<!-- sample data -->
+		<Grid.Resources>
+
+			<!-- Duck Report Data -->
+			<XmlDataProvider x:Key="ExpenseDataSource" XPath="Expenses">
+				<x:XData>
+					<Expenses xmlns="">
+						<Duck Name="Regular Duck" Department="Legal">
+							<Expense ExpenseType="Lunch" ExpenseAmount="50" />
+							<Expense ExpenseType="Transportation" ExpenseAmount="50" />
+						</Duck>
+						<Duck Name="Ninja Duck" Department="Marketing">
+							<Expense ExpenseType="Document printing"
+							         ExpenseAmount="50"/>
+							<Expense ExpenseType="Gift" ExpenseAmount="125" />
+						</Duck>
+						<Duck Name="Monster Duck" Department="Engineering">
+							<Expense ExpenseType="Magazine subscription" 
+							         ExpenseAmount="50"/>
+							<Expense ExpenseType="New machine" ExpenseAmount="600" />
+							<Expense ExpenseType="Software" ExpenseAmount="500" />
+						</Duck>
+						<Duck Name="Blocky Duck" Department="Finance">
+							<Expense ExpenseType="Dinner" ExpenseAmount="100" />
+						</Duck>
+					</Expenses>
+				</x:XData>
+			</XmlDataProvider>
+			
+			<!-- Name item template -->
+			<DataTemplate x:Key="nameItemTemplate">
+				<Label Content="{Binding XPath=@Name}"/>
+			</DataTemplate>
+
+		</Grid.Resources>
+		
+		<!--  Controls -->
 		<Label Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Trebuchet MS" FontWeight="Bold" FontSize="18" Foreground="#FF7500">View Ducks</Label>
 
 		<!-- Duck List -->
@@ -34,11 +71,9 @@
 			<Label VerticalAlignment="Center" FontWeight="Bold" Foreground="White">Duck Names</Label>
 		</Border>
 
-	    <ListBox Name="duckListBox" Grid.Column="1" Grid.Row="2" Background="Black" Foreground="White">
-		    <ListBoxItem>Regular Duck</ListBoxItem>
-		    <ListBoxItem>Ninja Duck</ListBoxItem>
-		    <ListBoxItem>Monster Duck</ListBoxItem>
-		    <ListBoxItem>Blocky Duck</ListBoxItem>
+		<!-- Background="Black" Foreground="White" -->
+	    <ListBox Name="duckListBox" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Duck}"
+	             ItemTemplate="{StaticResource nameItemTemplate}">
 	    </ListBox>
 
 	    <!-- View report button -->
