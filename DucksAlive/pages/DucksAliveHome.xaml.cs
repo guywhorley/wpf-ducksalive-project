@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DucksAlive
+namespace DucksAlive.pages
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for DucksAliveHome.xaml
 	/// </summary>
-	public partial class MainWindow : NavigationWindow
+	public partial class DucksAliveHome : Page
 	{
-		public MainWindow()
+		public DucksAliveHome()
 		{
 			InitializeComponent();
 		}
