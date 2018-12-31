@@ -11,7 +11,7 @@ namespace DucksAlive.pages
 		{
 			DataContext = data;
 		}
-		
+
 		public DucksAliveReportPage()
 		{
 			InitializeComponent();
