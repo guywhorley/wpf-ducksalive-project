@@ -43,7 +43,7 @@
 
 	    <!-- View report button -->
 	    <Button Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" Width="125"
-	            Height="25" HorizontalAlignment="Right" FontWeight="Bold" Foreground="White" Background="#FF7500">View Ducks</Button>
+	            Height="25" HorizontalAlignment="Right" FontWeight="Bold" Foreground="White" Background="#FF7500" Click="Button_Click">View Ducks</Button>
 
     </Grid>
 </Page>
